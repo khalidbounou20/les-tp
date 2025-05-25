@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription dans SMI</title>
+</head>
+<body>
+
+    <h2>Formulaire d'inscription dans  SMI</h2>
+
+    <form>
+        <label for="nom">Nom:</label><br>
+        <input type="text" id="nom" ><br><br>
+
+        <label for="prenom">Prénom:</label><br>
+        <input type="text" id="prenom"  ><br><br>
+
+        <label for="groupe">Groupe :</label><br>
+        <input type="number" id="groupe" ><br><br>
+
+        <label for="sujet">Sujet:</label><br>
+        <input type="text" id="sujet" ><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description"  rows="4" cols="50" >
+        </textarea></br>
+
+        <label for="date_debut">Date de début:</label><br>
+        <input type="date" id="date_debut" ><br><br>
+
+        <label for="date_fin">Date de fin:</label><br>
+        <input type="date" id="date_fin"><br><br>
+
+        <label for="direction">La direction:</label><br>
+        <select id="direction" >
+            <option value="prof1">Prof1</option>
+            <option value="prof2">Prof2</option>
+            <option value="prof3">Prof3</option>
+            <option value="prof4">Prof4</option>
+        </select><br><br>
+
+        <input type="submit" value="Envoyer">
+        <input type="reset" value="Annuler">
+    </form>
+
+</body>
+</html>
