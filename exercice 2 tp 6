@@ -1,0 +1,112 @@
+code html:
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Do List </title>
+ <link rel="stylesheet" href="ex2.css">
+</head>
+<body>
+ <div class="container">
+ <h1>Ma Liste de Tâches</h1>
+ <form id="task-form">
+ <input type="text" id="task-input" placeholder="Ajouter une
+nouvelle tâche" required>
+ <button type="submit">Ajouter</button>
+ </form>
+ <ul id="task-list"></ul>
+ </div>
+ <script src="ex2.js"></script>
+</body>
+</html>
+code css :
+body {
+ font-family: Arial, sans-serif;
+ background-color: #f4f4f4;
+ margin: 0;
+ padding: 20px;
+}
+.container {
+ max-width: 600px;
+ margin: auto;
+ background: white;
+ padding: 20px;
+ border-radius: 5px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+ text-align: center;
+}
+form {
+ display: flex;
+ justify-content: space-between;
+}
+input[type="text"] {
+ flex: 1;
+ padding: 10px;
+ border: 1px solid #ccc;
+ border-radius: 5px;
+}
+button {
+ padding: 10px 15px;
+ border: none;
+ background-color: #ADD8E6;
+ color: white; 
+border-radius: 5px;
+ cursor: pointer;
+}
+button:hover {
+ background-color: #ADD8E6;
+}
+ul {
+ list-style-type: none;
+}
+li {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 10px;
+ border-bottom: 1px solid #ccc;
+}
+.completed {
+ text-decoration: line-through;
+ color: gray;
+}
+.task-buttons {
+ display: flex;
+ gap: 10px;
+}
+code js:
+document.getElementById('task-form').addEventListener('submit', function(e) {
+ e.preventDefault();
+ const taskInput = document.getElementById('task-input');
+ const taskValue = taskInput.value;
+ if (taskValue) {
+ addTask(taskValue);
+ taskInput.value = '';
+ }
+});
+function addTask(task) {
+ const taskList = document.getElementById('task-list');
+ const li = document.createElement('li');
+
+ li.textContent = task;
+ li.classList.add('task-item');
+ const completeButton = document.createElement('button');
+ completeButton.textContent = 'Accomplie';
+ completeButton.addEventListener('click', function() {
+ li.classList.toggle('completed');
+ });
+ const deleteButton = document.createElement('button');
+ deleteButton.textContent = 'Supprimer';
+ deleteButton.addEventListener('click', function() {
+ taskList.removeChild(li);
+ }); 
+const buttonContainer = document.createElement('div');
+ buttonContainer.classList.add('task-buttons');
+ buttonContainer.appendChild(completeButton);
+ buttonContainer.appendChild(deleteBut
+li.appendChild(buttonContainer);
+ taskList.appendChild(li);
+} 
