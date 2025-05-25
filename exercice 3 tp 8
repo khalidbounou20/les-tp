@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de Contact</title>
+</head>
+<body>
+    <h2>Formulaire de contact</h2>
+
+    <form method="post">
+        <label>Nom :</label><br>
+        <input type="text" name="nom" required><br><br>
+
+        <label>Email :</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label>Message :</label><br>
+        <textarea name="message" rows="4" required></textarea><br><br>
+
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nom = trim($_POST["nom"]);
+        $email = trim($_POST["email"]);
+        $message = trim($_POST["message"]);
+
+        if ($nom && $email && $message) {
+            echo "<h3>Message reçu :</h3>";
+            echo "<p><strong>Nom :</strong> $nom</p>";
+            echo "<p><strong>Email :</strong> $email</p>";
+            echo "<p><strong>Message :</strong><br>$message</p>";
+        } else {
+            echo "<p style='color:red;'>Veuillez remplir tous les champs.</p>";
+        }
+    }
+    ?>
+</body>
+</html>
