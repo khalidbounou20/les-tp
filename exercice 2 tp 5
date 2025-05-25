@@ -1,0 +1,42 @@
+const nombreAleatoire = Math.floor(Math.random() * 10) + 1;
+let nombreTentatives = 0;
+let proposition;
+
+
+do {
+ 
+    proposition = parseInt(prompt("Devinez le nombre (entre 1 et 10) :"));
+    nombreTentatives++;
+    
+    
+    if (isNaN(proposition) || proposition < 1 || proposition > 10) {
+        alert("Veuillez entrer un nombre valide entre 1 et 10");
+        nombreTentatives--; 
+    } else {
+       
+        if (proposition < nombreAleatoire) {
+            alert("Le nombre à deviner est plus grand !");
+        } else if (proposition > nombreAleatoire) {
+            alert("Le nombre à deviner est plus petit !");
+        }
+    }
+} while (proposition !== nombreAleatoire);
+
+
+alert(`Bravo ! Vous avez trouvé le nombre ${nombreAleatoire} en ${nombreTentatives} tentatives !`);
+let nombreInconnu = Math.floor(Math.random() * 10) + 1;
+let tentative = 0;
+let trouve = false;
+while (!trouve) {
+ let proposition = parseInt(prompt("Devinez le nombre entre 1 et 10 :"));
+ tentative++;
+ if (proposition < nombreInconnu) {
+ alert("C'est plus grand !");
+ } else if (proposition > nombreInconnu) {
+ alert("C'est plus petit !");
+ } else {
+ alert("Bravo ! Vous avez trouve le nombre en " + tentative + "
+tentative.");
+ trouve = true;
+ }
+} 
