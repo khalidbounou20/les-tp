@@ -1,0 +1,19 @@
+let nombre1 = parseFloat(prompt("Entrez le premier nombre :"));
+let nombre2 = parseFloat(prompt("Entrez le deuxième nombre :"));
+
+
+if (isNaN(nombre1) || isNaN(nombre2)) {
+    console.log("Veuillez entrer des nombres valides.");
+} else {
+    
+    console.log("Somme : " + (nombre1 + nombre2));
+    console.log("Différence : " + (nombre1 - nombre2));
+    console.log("Produit : " + (nombre1 * nombre2));
+    
+    
+    if (nombre2 !== 0) {
+        console.log("Quotient : " + (nombre1 / nombre2));
+    } else {
+        console.log("Quotient : Division par zéro impossible.");
+   }
+}
