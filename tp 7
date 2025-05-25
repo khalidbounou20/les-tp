@@ -1,0 +1,147 @@
+code html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulaire PHP</title>
+<link rel="stylesheet" href="tp7.css">
+</head>
+<body>
+<div class="form-container">
+<h1>Formulaire avec PHP</h1>
+<form method="post" action="tp7.php" method="POST">
+<div class="form-group">
+<label for="nom">Nom :</label>
+<input type="text" id="nom" placeholder="Entrez
+votre nom" required>
+</div>
+<div class="form-group">
+<label for="prenom">Prénom :</label>
+<input type="text" id="prenom" 
+placeholder="Entrez votre prénom" required>
+</div>
+<div class="form-group">
+<label for="annee_naissance">Votre année de naissance
+:</label>
+<input type="number" id="annee_naissance"
+max="<?php echo date('Y'); ?>" value="<?php echo date('Y')
+- 30; ?>" required>
+</div>
+<div class="form-group">
+<label for="identifiant">Identifiant :</label>
+<input type="text" id="identifiant"
+placeholder="Donnez un identifiant" required>
+</div>
+<div class="form-group">
+<label for="mot_de_passe">Mot de passe :</label>
+<input type="password" id="mot_de_passe" 
+placeholder="Donnez un mot de passe"
+required>
+</div>
+<div class="form-group">
+<label for="civilite">Sexe:</label>
+<div class="radio-group">
+<input type="radio" id="masculin" 
+value="Masculin" checked>
+<label for="masculin">Masculin</label>
+<input type="radio" id="feminin"
+value="Féminin">
+<label for="feminin">Féminin</label>
+</div>
+</div>
+<div class="checkbox-group">
+<input type="checkbox" id="debutant"  checked>
+<label for="debutant">Je débute en PHP</label>
+</div>
+<div class="form-group">
+<button type="submit">Envoyer</button>
+</div>
+</form>
+</div>
+</body>
+</html>
+code css
+body {
+font-family: Arial, sans-serif;
+line-height: 2;
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+background-color: #f5f5f5;
+}
+h1 {
+color: #333;
+text-align: center;
+}
+.form-container {
+background-color: #fff;
+padding: 20px;
+border-radius: 9px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+margin-bottom: 15px;
+}
+label {
+display: block;
+margin-bottom: 6px;
+font-weight: bold;
+}
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+width: 100%;
+padding: 8px;
+border: 1px solid #ddd;
+border-radius: 4px;
+box-sizing: border-box;
+}
+.radio-group {
+margin: 10px 0;
+}
+.radio-group label {
+display: inline;
+font-weight: normal;
+margin-right: 16px;
+}
+.checkbox-group {
+margin: 10px 0;
+}
+button {
+background-color: #4CAF50;
+color: white;
+padding: 10px 15px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 16px;
+}
+button:hover {
+background-color: #45a049;
+}
+code php
+<?php
+$civilite = isset($_POST['civilite']) ? $_POST['civilite'] : '';
+$nom = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) :
+'';
+$prenom = isset($_POST['prenom']) ?
+htmlspecialchars($_POST['prenom']) : '';
+$annee_naissance = isset($_POST['annee_naissance']) ?
+intval($_POST['annee_naissance']) : 0;
+$identifiant = isset($_POST['identifiant']) ?
+htmlspecialchars($_POST['identifiant']) : '';
+$mot_de_passe = isset($_POST['mot_de_passe']) ?
+$_POST['mot_de_passe'] : '';
+$debutant = isset($_POST['debutant']) ? 'Oui' : 'Non';
+$age = date('Y') - $annee_naissance;
+echo "<h2>Résultats :</h2>";
+echo "<p><strong>Civilité :</strong> $civilite</p>";
+echo "<p><strong>Nom :</strong> $nom</p>";
+echo "<p><strong>Prénom :</strong> $prenom</p>";
+echo "<p><strong>Âge :</strong> $age ans</p>";
+echo "<p><strong>Identifiant :</strong> $identifiant</p>";
+echo "<p><strong>Mot de passe :</strong> ********</p>";
+echo "<p><strong>Débutant en PHP :</strong> $debutant</p>";
+echo "<hr>";
+?>
